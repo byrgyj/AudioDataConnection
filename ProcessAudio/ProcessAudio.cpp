@@ -8,8 +8,8 @@
 
 #include <Windows.h>
 #include <io.h>
-bool ConnectAudio(const char *headerFile, const char *dataFile);
-char* WCharToChar(TCHAR *s);
+bool connectAudio(const char *headerFile, const char *dataFile);
+char* wcharToChar(TCHAR *s);
 void listFiles(std::vector<std::string> &vec, const char * dir);
 std::string getCurrentExePath();
 
@@ -29,16 +29,14 @@ int _tmain(int argc, _TCHAR* argv[])
 		std::string srcFile = currentFolder;
 		srcFile.append("\\");
 		srcFile.append(vecFiles[i]);
-		ConnectAudio(header.c_str(), srcFile.c_str());
+		connectAudio(header.c_str(), srcFile.c_str());
 	}
 	
-
-
 	return 0;
 }
 
 
-bool ConnectAudio(const char *headerFile,const char *dataFile)
+bool connectAudio(const char *headerFile,const char *dataFile)
 {
 	if (!headerFile || !dataFile){
 		return false;
@@ -82,7 +80,7 @@ bool ConnectAudio(const char *headerFile,const char *dataFile)
 }
 
 
-char* WCharToChar(TCHAR *s){
+char* wcharToChar(TCHAR *s){
 	int w_nlen=WideCharToMultiByte(CP_ACP,0,s,-1,NULL,0,NULL,false);
 	char *ret=new char[w_nlen];
 	memset(ret,0,w_nlen);
